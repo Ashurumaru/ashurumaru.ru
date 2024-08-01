@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { memo } from "react";
 
 const links = [
     { name: "home", path: "/" },
@@ -20,11 +21,7 @@ const Nav = () => {
                 <Link
                     key={link.path}
                     href={link.path}
-                    className={`${
-                        link.path === pathname
-                            ? "text-accent border-b-2 border-accent"
-                            : ""
-                    } capitalize font-medium hover:text-accent transition-all`}
+                    className={`capitalize font-medium transition-all ${link.path === pathname ? "text-accent border-b-2 border-accent" : ""}`}
                 >
                     {link.name}
                 </Link>
@@ -33,4 +30,4 @@ const Nav = () => {
     );
 };
 
-export default Nav;
+export default memo(Nav);

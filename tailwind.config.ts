@@ -1,6 +1,7 @@
-import type { Config } from "tailwindcss"
+import type { Config } from 'tailwindcss';
 
-const config = {
+const config: Config = {
+  mode: 'jit',
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -24,14 +25,12 @@ const config = {
       primary: "var(--font-jetbrainsMono)",
     },
     extend: {
-
       colors: {
         primary: "#1c1c22",
         accent: {
-          DEFAULT: "#00ff99",
-          hover: "#00e187",
+          DEFAULT: "#C5B8A5",
+          hover: "#B3A18D",
         }
-
       },
       keyframes: {
         "accordion-down": {
@@ -49,7 +48,9 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'),
+  ],};
 
-export default config
+export default config;
