@@ -19,7 +19,7 @@ const MobileNav = () => {
 
     return (
         <Sheet>
-            <SheetTrigger className="flex justify-center items-center">
+            <SheetTrigger className="flex justify-center items-center" aria-label="Open menu">
                 <CiMenuFries className="text-[32px] text-accent" />
             </SheetTrigger>
             <SheetContent className="flex flex-col items-center">
@@ -45,3 +45,4 @@ const MobileNav = () => {
 };
 
 export default memo(MobileNav);
+

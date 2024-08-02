@@ -2,7 +2,7 @@
 
 import useGithubStats from "react-github-user-stats";
 import CountUp from "react-countup";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaCode, FaHeart, FaCheckCircle, FaLaptopCode, FaTrophy, FaBook, FaTv, FaGamepad } from 'react-icons/fa';
 import { IconType } from 'react-icons';
@@ -37,7 +37,7 @@ interface StatCardProps {
     IconComponent: IconType;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ value, label, IconComponent }) => (
+const StatCard: React.FC<StatCardProps> = React.memo(({ value, label, IconComponent }) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,9 @@ const StatCard: React.FC<StatCardProps> = ({ value, label, IconComponent }) => (
         </p>
         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-lg pointer-events-none"></div>
     </motion.div>
-);
+));
+
+StatCard.displayName = "StatCard";
 
 const Stats: React.FC = () => {
     const { error, loading, userData } = useGithubStats("Ashurumaru");
@@ -72,20 +74,26 @@ const Stats: React.FC = () => {
         }
     }, [userData, error]);
 
+    const renderStatCards = (stats: { value: number, label: string, IconComponent: IconType }[]) =>
+        stats.map((stat, index) => <StatCard key={index} value={stat.value} label={stat.label} IconComponent={stat.IconComponent} />);
+
     return (
         <section className="container mx-auto p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[80vw] mx-auto sm:max-w-none text-center">
-                <StatCard value={githubData.publicRepos} label="Public Repos" IconComponent={FaCode} />
-                <StatCard value={githubData.followers} label="Github Followers" IconComponent={FaHeart} />
-                <StatCard value={STATIC_STATS.completedProjects} label="Completed Projects" IconComponent={FaCheckCircle} />
-                <StatCard value={STATIC_STATS.knownTechnologies} label="Known Technologies" IconComponent={FaLaptopCode} />
-                <StatCard value={STATIC_STATS.hackathonsParticipated} label="Hackathons Participated" IconComponent={FaTrophy} />
-                <StatCard value={STATIC_STATS.mangasRead} label="Mangas Read" IconComponent={FaBook} />
-                <StatCard value={STATIC_STATS.animesWatched} label="Animes Watched" IconComponent={FaTv} />
-                <StatCard value={STATIC_STATS.apexHours} label="Hours in Apex Legends" IconComponent={FaGamepad} />
+                {renderStatCards([
+                    { value: githubData.publicRepos, label: "Public Repos", IconComponent: FaCode },
+                    { value: githubData.followers, label: "Github Followers", IconComponent: FaHeart },
+                    { value: STATIC_STATS.completedProjects, label: "Completed Projects", IconComponent: FaCheckCircle },
+                    { value: STATIC_STATS.knownTechnologies, label: "Known Technologies", IconComponent: FaLaptopCode },
+                    { value: STATIC_STATS.hackathonsParticipated, label: "Hackathons Participated", IconComponent: FaTrophy },
+                    { value: STATIC_STATS.mangasRead, label: "Mangas Read", IconComponent: FaBook },
+                    { value: STATIC_STATS.animesWatched, label: "Animes Watched", IconComponent: FaTv },
+                    { value: STATIC_STATS.apexHours, label: "Hours in Apex Legends", IconComponent: FaGamepad },
+                ])}
             </div>
         </section>
     );
+
 };
 
 export default Stats;
