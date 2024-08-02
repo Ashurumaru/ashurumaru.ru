@@ -59,7 +59,7 @@ const Work: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{
                 opacity: 1,
-                transition: { delay: 0.3, duration: 0.6, ease: "easeInOut" },
+                transition: { delay: 0.3, duration: 0.4, ease: "easeInOut" },
             }}
             className="min-h-[80vh] flex flex-col justify-center py-12 px-4 md:px-8 xl:px-0"
         >
@@ -98,7 +98,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => (
     <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className="w-full lg:w-[50%] flex flex-col justify-between order-2 lg:order-none mb-8 lg:mb-0"
     >
         <div className="flex flex-col gap-[20px]">
@@ -136,7 +136,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project }) => (
     <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className="h-[320px] md:h-[420px] lg:h-[460px] relative group flex justify-center items-center bg-pink-50/20"
     >
         <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
@@ -146,7 +146,7 @@ const ProjectSlide: React.FC<ProjectSlideProps> = ({ project }) => (
                 fill
                 className="object-cover"
                 alt={project.category}
-                priority // Загружаем изображение без lazy loading
+                priority
             />
         </div>
     </motion.div>

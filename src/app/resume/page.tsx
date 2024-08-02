@@ -1,13 +1,14 @@
 "use client";
 
-import { FaCss3, FaHtml5, FaJs, FaNodeJs, FaReact } from "react-icons/fa";
+import { FaCss3, FaHtml5, FaJs, FaNodeJs, FaReact, FaBriefcase, FaGraduationCap, FaUser } from "react-icons/fa";
 import { SiGit, SiMysql, SiPostgresql, SiSharp, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { GiSkills } from "react-icons/gi";
+import { motion } from "framer-motion";
+import React from 'react';
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { motion } from "framer-motion";
-import React from 'react';
 
 interface InfoField {
     fieldName: string;
@@ -32,15 +33,16 @@ interface SkillItem {
 }
 
 interface SectionData<T> {
-    icon?: string;
+    icon?: React.ReactNode;
     title: string;
     description: string;
     items?: T[];
 }
 
 const about: SectionData<InfoField> = {
-    title: "About me",
-    description: "",
+    icon: <FaUser className="text-3xl text-accent" />,
+    title: "About Me",
+    description: "A brief description about myself.",
     items: [
         { fieldName: "Name", fieldValue: "Ashurumaru" },
         { fieldName: "Phone", fieldValue: "On request" },
@@ -53,29 +55,26 @@ const about: SectionData<InfoField> = {
 };
 
 const experience: SectionData<ExperienceItem> = {
-    icon: "assets/resume/badge.svg",
+    icon: <FaBriefcase className="text-3xl text-accent"/>,
     title: "Experience",
-    description: "text",
-    items: [
-        { company: "", position: "", duration: "" },
-        { company: "", position: "", duration: "" },
-        { company: "", position: "", duration: "" },
-    ],
+    description: "Although I don't have professional experience yet, I am actively honing my skills and eagerly looking forward to contributing to impactful projects in the near future.",
+    items: [],
 };
 
 const education: SectionData<EducationItem> = {
-    icon: "assets/resume/cap.svg",
+    icon: <FaGraduationCap className="text-3xl text-accent"/>,
     title: "Education",
-    description: "",
+    description: "My educational background.",
     items: [
-        { institution: "", degree: "", duration: "" },
-        { institution: "", degree: "", duration: "" },
+        { institution: "Siberian State University of Telecommunications and Informatics (branch)", degree: "Programming in computer networks", duration: "2021 - Present" },
+        { institution: "Additional professional education", degree: "An introduction to Model View ViewModel with object-oriented programming.", duration: "October 22, 2023 - April 13, 2024" },
     ],
 };
 
 const skills: SectionData<SkillItem> = {
+    icon: <GiSkills className="text-3xl text-accent" />,
     title: "Skills",
-    description: "List of skills",
+    description: "Technologies and tools I excel in.",
     items: [
         { icon: <FaHtml5 />, name: "HTML5" },
         { icon: <FaCss3 />, name: "CSS3" },
@@ -91,6 +90,24 @@ const skills: SectionData<SkillItem> = {
     ],
 };
 
+interface SectionDisplayProps {
+    title: string;
+    description: string;
+    icon?: React.ReactNode;
+    children: React.ReactNode;
+}
+
+const SectionDisplay: React.FC<SectionDisplayProps> = ({ title, description, icon, children }) => (
+    <div className="flex flex-col gap-[30px] text-center xl:text-left">
+        <div className="flex items-center justify-center xl:justify-start gap-4">
+            {icon && <div className="text-accent text-4xl">{icon}</div>}
+            <h2 className="text-4xl font-semibold">{title}</h2>
+        </div>
+        <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{description}</p>
+        {children}
+    </div>
+);
+
 const Resume: React.FC = () => {
     return (
         <motion.div
@@ -98,12 +115,12 @@ const Resume: React.FC = () => {
             animate={{
                 opacity: 1,
                 transition: {
-                    duration: 0.5,
+                    duration: 0.4,
                     ease: "easeIn",
-                    delay: 1.0,
+                    delay: 0.3,
                 },
             }}
-            className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+            className="min-h-[70vh] flex items-center justify-center py-12 xl:pt-[70px] xl:pb-[50px]"
         >
             <div className="container mx-auto">
                 <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-[60px]">
@@ -114,9 +131,9 @@ const Resume: React.FC = () => {
                         <TabsTrigger value="about" aria-label="About Me">About Me</TabsTrigger>
                     </TabsList>
 
-                    <div className="min-h-[70vh] w-full">
-                        <TabsContent value="experience">
-                            <SectionDisplay title={experience.title} description={experience.description}>
+                    <div className="min-h-[70vh] w-full flex flex-col">
+                        <TabsContent value="experience" className="flex-grow">
+                            <SectionDisplay title={experience.title} description={experience.description} icon={experience.icon}>
                                 <ScrollArea className="h-[400px]">
                                     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                                         {experience.items?.map((exp, index) => (
@@ -139,8 +156,8 @@ const Resume: React.FC = () => {
                             </SectionDisplay>
                         </TabsContent>
 
-                        <TabsContent value="education">
-                            <SectionDisplay title={education.title} description={education.description}>
+                        <TabsContent value="education" className="flex-grow">
+                            <SectionDisplay title={education.title} description={education.description} icon={education.icon}>
                                 <ScrollArea className="h-[400px]">
                                     <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
                                         {education.items?.map((edu, index) => (
@@ -163,8 +180,8 @@ const Resume: React.FC = () => {
                             </SectionDisplay>
                         </TabsContent>
 
-                        <TabsContent value="skills" className="w-full h-full">
-                            <SectionDisplay title={skills.title} description={skills.description}>
+                        <TabsContent value="skills" className="flex-grow">
+                            <SectionDisplay title={skills.title} description={skills.description} icon={skills.icon}>
                                 <ScrollArea className="h-[400px]">
                                     <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
                                         {skills.items?.map((skill) => (
@@ -193,8 +210,8 @@ const Resume: React.FC = () => {
                             </SectionDisplay>
                         </TabsContent>
 
-                        <TabsContent value="about">
-                            <SectionDisplay title={about.title} description={about.description}>
+                        <TabsContent value="about" className="flex-grow">
+                            <SectionDisplay title={about.title} description={about.description} icon={about.icon}>
                                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[650px] mx-auto xl:mx-0">
                                     {about.items?.map((info) => (
                                         <li
@@ -214,19 +231,5 @@ const Resume: React.FC = () => {
         </motion.div>
     );
 };
-
-interface SectionDisplayProps {
-    title: string;
-    description: string;
-    children: React.ReactNode;
-}
-
-const SectionDisplay: React.FC<SectionDisplayProps> = ({ title, description, children }) => (
-    <div className="flex flex-col gap-[30px] text-center xl:text-left">
-        <h2 className="text-4xl font-semibold">{title}</h2>
-        <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">{description}</p>
-        {children}
-    </div>
-);
 
 export default Resume;
