@@ -10,12 +10,12 @@ const Photo = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.3, ease: "easeInOut" }}
+                transition={{ delay: 0.5, duration: 0.4, ease: "easeInOut" }}
             >
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.3, ease: "easeInOut" }}
+                    transition={{ delay: 0.5, duration: 0.4, ease: "easeInOut" }}
                     className="relative w-[298px] h-[298px] xl:w-[400px] xl:h-[400px] mix-blend-lighten"
                 >
                     <Image

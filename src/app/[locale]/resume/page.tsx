@@ -6,9 +6,9 @@ import { GiSkills } from "react-icons/gi";
 import { motion } from "framer-motion";
 import React from 'react';
 
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ScrollArea } from "@/shared/ui/scroll-area";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/shared/ui/tooltip";
 
 interface InfoField {
     fieldName: string;
@@ -163,16 +163,13 @@ const Resume: React.FC = () => {
                                         {education.items?.map((edu, index) => (
                                             <li
                                                 key={index}
-                                                className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                                                className="bg-[#232329] py-6 px-8 lg:px-10 rounded-lg shadow-lg"
                                             >
-                                                <span className="text-accent">{edu.duration}</span>
-                                                <h4 className="text-xl max-w-[260px] min-h-[40px] text-center lg:text-left">
-                                                    {edu.degree}
-                                                </h4>
-                                                <div className="flex items-center gap-3">
-                                                    <span className="w-2 h-2 rounded-full bg-accent"></span>
-                                                    <p className="text-white/60">{edu.institution}</p>
+                                                <div className="mb-2">
+                                                    <span className="block text-accent text-sm font-medium">{edu.duration}</span>
+                                                    <h3 className="text-lg sm:text-xl font-bold leading-tight mt-1">{edu.institution}</h3>
                                                 </div>
+                                                <p className="text-white/70 text-sm sm:text-base">{edu.degree}</p>
                                             </li>
                                         ))}
                                     </ul>

@@ -6,11 +6,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/shared/ui/tooltip";
 
 import Link from "next/link";
 import Image from "next/image";
-import WorkSliderBtn from "@/components/WorkSliderBtn";
+import WorkSliderBtn from "@/widgets/WorkSliderBtn";
 
 interface Project {
     num: string;

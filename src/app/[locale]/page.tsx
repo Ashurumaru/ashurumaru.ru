@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
 import { FiDownload } from 'react-icons/fi';
 import React from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/shared/ui/button';
 
-const Social = dynamic(() => import('@/components/Social'), { ssr: false });
-const Photo = dynamic(() => import('@/components/Photo'), { ssr: false });
-const Stats = dynamic(() => import('@/components/Stats'), { ssr: false });
+const Social = dynamic(() => import('@/widgets/Social'), { ssr: false });
+const Photo = dynamic(() => import('@/widgets/Photo'), { ssr: false });
+const Stats = dynamic(() => import('@/widgets/Stats'), { ssr: false });
 
 const Home: React.FC = () => {
     return (
@@ -23,14 +23,6 @@ const Home: React.FC = () => {
                             I excel at crafting elegant digital experiences and am proficient in various programming languages and technologies.
                         </p>
                         <div className="flex flex-col xl:flex-row items-center gap-8">
-                            {/* <Button
-                                variant="outline"
-                                size="lg"
-                                className="uppercase flex items-center gap-2"
-                            >
-                                <span>Download CV</span>
-                                <FiDownload className="text-xl" />
-                            </Button> */}
                             <div className="mb-8 xl:mb-0">
                                 <Social
                                     containerStyles="flex gap-6"
