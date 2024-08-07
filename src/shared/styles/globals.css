@@ -3,31 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply font-primary bg-primary text-white leading-loose;
-    }
+  body {
+    @apply font-primary bg-primary text-white leading-loose;
+  }
 
-    .h1 {
-        @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
-    }
+  .h1 {
+    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+  }
 
-    .h2 {
-        @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
-    }
+  .h2 {
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+  }
 
-    .h3 {
-        @apply text-[28px] xl:text-[36px] leading-[1.1] font-semibold;
-    }
+  .h3 {
+    @apply text-[28px] xl:text-[36px] leading-[1.1] font-semibold;
+  }
 
-    .h4 {
-        @apply text-[20px] xl:text-[28px] leading-[1.1] font-semibold;
-    }
+  .h4 {
+    @apply text-[20px] xl:text-[28px] leading-[1.1] font-semibold;
+  }
 
-    .text-outline {
-        -webkit-text-stroke: 1px #C5B8A5;
-    }
+  .text-outline {
+    -webkit-text-stroke: 1px #c5b8a5;
+  }
 
-    .text-outline-hover {
-        -webkit-text-stroke: 1px #B3A18D;
-    }
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #b3a18d;
+  }
 }

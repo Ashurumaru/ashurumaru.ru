@@ -5,12 +5,127 @@
     "name": "Ashurumaru",
     "description": "I excel at crafting elegant digital experiences and am proficient in various programming languages and technologies."
   },
+
   "navigation": {
     "home": "Home",
     "services": "Services",
     "resume": "Resume",
     "work": "Work",
     "contact": "Contact me"
+  },
 
+  "services": {
+    "coursework": {
+      "num": "01",
+      "title": "Coursework Writing for Network Programming",
+      "description": "I provide high-quality coursework writing services for network programming topics."
+    },
+
+    "thesis": {
+      "num": "02",
+      "title": "Thesis Writing for Network Programming",
+      "description": "I offer professional thesis writing services for network programming disciplines."
+    },
+
+    "essays": {
+      "num": "03",
+      "title": "Essay Writing on Any Topic",
+      "description": "I can write essays on a wide range of topics with a focus on quality and thorough research."
+    },
+
+    "labs": {
+      "num": "04",
+      "title": "Lab Work for Network Programming",
+      "description": "I can assist with completing lab work for network programming courses, ensuring accuracy and understanding."
+    },
+
+    "telegramBot": {
+      "num": "05",
+      "title": "Telegram Bot Development",
+      "description": "I develop Telegram bots of any complexity, tailored to your specific needs."
+    },
+
+    "landingPage": {
+      "num": "06",
+      "title": "Landing Page Development",
+      "description": "I create responsive and effective landing pages that help you achieve your business goals."
+    },
+
+    "businessCardSite": {
+      "num": "07",
+      "title": "Business Card Website Development",
+      "description": "I design and develop professional business card websites that represent your brand effectively."
+    },
+
+    "examPreparation": {
+      "num": "08",
+      "title": "Individual Exam Preparation",
+      "description": "I offer personalized preparation sessions for demo exams in network programming and related fields."
+    }
+  },
+
+  "resume": {
+    "about": {
+      "title": "About Me",
+      "description": "A brief description about myself.",
+      "items": {
+        "name": "Name",
+        "phone": "Phone",
+        "experience": "Experience",
+        "nationality": "Nationality",
+        "github": "Github",
+        "email": "Email",
+        "languages": "Languages"
+      },
+      "values": {
+        "name": "Ashurumaru",
+        "phone": "On request",
+        "experience": "0 Years",
+        "nationality": "Russia",
+        "github": "Ashurumaru",
+        "email": "ashuramarumaru@gmail.com",
+        "languages": "Russian, English"
+      }
+    },
+
+    "experience": {
+      "title": "Experience",
+      "description": "Although I don't have professional experience yet, I am actively honing my skills and eagerly looking forward to contributing to impactful projects in the near future."
+    },
+
+    "education": {
+      "title": "Education",
+      "description": "My educational background.",
+      "items": [
+        {
+          "institution": "Siberian State University of Telecommunications and Informatics (branch)",
+          "degree": "Programming in computer networks",
+          "duration": "2021 - Present"
+        },
+        {
+          "institution": "Additional professional education",
+          "degree": "An introduction to Model View ViewModel with object-oriented programming.",
+          "duration": "October 22, 2023 - April 13, 2024"
+        }
+      ]
+    },
+
+    "skills": {
+      "title": "Skills",
+      "description": "Technologies and tools I excel in.",
+      "items": {
+        "html": "HTML5",
+        "css": "CSS3",
+        "js": "JavaScript",
+        "node": "Node.js",
+        "typescript": "TypeScript",
+        "react": "React",
+        "postgresql": "PostgreSQL",
+        "mysql": "MySQL",
+        "tailwindcss": "TailwindCSS",
+        "git": "Git",
+        "sharp": "C#"
+      }
+    }
   }
 }
