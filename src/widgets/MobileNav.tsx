@@ -5,16 +5,19 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
 import { memo } from "react";
+import { Locale } from '@/shared/config/i18n';
+import { getDictionary } from '@/lib/dictionary';
 
-const links = [
-    { name: "home", path: "/" },
-    { name: "services", path: "/services" },
-    { name: "resume", path: "/resume" },
-    { name: "work", path: "/work" },
-];
-
-const MobileNav = () => {
+const MobileNav = async ({ lang }: { lang: Locale }) => {
     const pathname = usePathname();
+    const { navigation } = await getDictionary(lang);
+
+    const links = [
+        { name: navigation.home, path: `/${lang}/` },
+        { name: navigation.services, path: `/${lang}/services` },
+        { name: navigation.resume, path: `/${lang}/resume` },
+        { name: navigation.work, path: `/${lang}/work` },
+    ];
 
     return (
         <Sheet>
@@ -23,7 +26,7 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent className="flex flex-col items-center">
                 <div className="mt-32 mb-40 text-center">
-                    <Link href="/public" className="text-4xl font-semibold">
+                    <Link href={`/${lang}`} className="text-4xl font-semibold">
                         Ashurumaru <span className="text-accent">.</span>
                     </Link>
                 </div>
@@ -44,4 +47,3 @@ const MobileNav = () => {
 };
 
 export default memo(MobileNav);
-

@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import '../../shared/styles/globals.css';
+import '@/shared/styles/globals.css';
 import React, { FC } from 'react';
+import { Locale, i18n } from '@/shared/config/i18n';
 
 const Header = dynamic(() => import('@/widgets/Header'), { ssr: false });
 const PageTransition = dynamic(() => import('@/widgets/PageTransition'), { ssr: false });
@@ -46,18 +46,23 @@ export const metadata: Metadata = {
     },
 };
 
-const RootLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+export async function generateStaticParams() {
+    return i18n.locales.map(locale => ({ lang: locale }))
+}
+
+const RootLayout: FC<{
+    children: React.ReactNode, params: { lang: Locale } }> = ({ children, params }) => {
     return (
-        <html lang="en">
+        <html lang={params.lang}>
         <body className={jetBrainsMono.variable}>
-        <link rel="preconnect" href="https://api.github.com"/>
-        <link rel="dns-prefetch" href="https://api.github.com"/>
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
         <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <SpeedInsights/>
-        <Header/>
+        <SpeedInsights />
+        <Header lang={params.lang} />
         <PageTransition>
             {children}
         </PageTransition>

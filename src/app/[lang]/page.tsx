@@ -31,7 +31,6 @@ const Home: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Фотография */}
                     <div className="order-1 xl:order-none mb-8 xl:mb-0">
                         <Photo />
                     </div>

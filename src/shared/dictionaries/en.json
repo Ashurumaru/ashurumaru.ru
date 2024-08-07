@@ -1,0 +1,16 @@
+{
+  "home": {
+    "jobTitle": "Software Developer",
+    "greeting": "Hello, I'm",
+    "name": "Ashurumaru",
+    "description": "I excel at crafting elegant digital experiences and am proficient in various programming languages and technologies."
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "resume": "Resume",
+    "work": "Work",
+    "contact": "Contact me"
+
+  }
+}
