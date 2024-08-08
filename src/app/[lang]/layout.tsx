@@ -51,6 +51,14 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://ashurumaru.vercel.app',
     siteName: 'Ashurumaru',
+    images: [
+      {
+        url: 'https://ashurumaru.vercel.app/assets/logo.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Ashurumaru - Разработчик ПО',
+      },
+    ],
   },
 };
 
