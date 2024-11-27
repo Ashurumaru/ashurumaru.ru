@@ -7,13 +7,7 @@ import { BsArrowDownRight } from 'react-icons/bs';
 
 import { getDictionary } from '@/lib/dictionary';
 import { Locale } from '@/shared/config/i18n';
-
-interface Service {
-  num: string;
-  title: string;
-  description: string;
-  href: string;
-}
+import { Service } from '@/shared/types/types';
 
 const ServiceItem: React.FC<Service> = ({ num, title, description, href }) => {
   return (

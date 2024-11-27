@@ -2,125 +2,16 @@
 
 import { motion } from 'framer-motion';
 import React from 'react';
-import {
-  FaBriefcase,
-  FaCss3,
-  FaGraduationCap,
-  FaHtml5,
-  FaJs,
-  FaNodeJs,
-  FaReact,
-  FaUser,
-} from 'react-icons/fa';
-import { GiSkills } from 'react-icons/gi';
-import {
-  SiGit,
-  SiMysql,
-  SiPostgresql,
-  SiSharp,
-  SiTailwindcss,
-  SiTypescript,
-} from 'react-icons/si';
 
-import { ScrollArea } from '@/shared/ui/scroll-area';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/shared/ui/tooltip';
-
-interface InfoField {
-  fieldName: string;
-  fieldValue: string;
-}
-
-interface ExperienceItem {
-  company: string;
-  position: string;
-  duration: string;
-}
-
-interface EducationItem {
-  institution: string;
-  degree: string;
-  duration: string;
-}
-
-interface SkillItem {
-  icon: React.ReactNode;
-  name: string;
-}
-
-interface SectionData<T> {
-  icon?: React.ReactNode;
-  title: string;
-  description: string;
-  items?: T[];
-}
-
-const about: SectionData<InfoField> = {
-  icon: <FaUser className="text-3xl text-accent" />,
-  title: 'About Me',
-  description: 'A brief description about myself.',
-  items: [
-    { fieldName: 'Name', fieldValue: 'Ashurumaru' },
-    { fieldName: 'Phone', fieldValue: 'On request' },
-    { fieldName: 'Experience', fieldValue: '0 Years' },
-    { fieldName: 'Nationality', fieldValue: 'Russia' },
-    { fieldName: 'Github', fieldValue: 'Ashurumaru' },
-    { fieldName: 'Email', fieldValue: 'ashuramarumaru@gmail.com' },
-    { fieldName: 'Languages', fieldValue: 'Russian, English' },
-  ],
-};
-
-const experience: SectionData<ExperienceItem> = {
-  icon: <FaBriefcase className="text-3xl text-accent" />,
-  title: 'Experience',
-  description:
-    "Although I don't have professional experience yet, I am actively honing my skills and eagerly looking forward to contributing to impactful projects in the near future.",
-  items: [],
-};
-
-const education: SectionData<EducationItem> = {
-  icon: <FaGraduationCap className="text-3xl text-accent" />,
-  title: 'Education',
-  description: 'My educational background.',
-  items: [
-    {
-      institution:
-        'Siberian State University of Telecommunications and Informatics (branch)',
-      degree: 'Programming in computer networks',
-      duration: '2021 - Present',
-    },
-    {
-      institution: 'Additional professional education',
-      degree:
-        'An introduction to Model View ViewModel with object-oriented programming.',
-      duration: 'October 22, 2023 - April 13, 2024',
-    },
-  ],
-};
-
-const skills: SectionData<SkillItem> = {
-  icon: <GiSkills className="text-3xl text-accent" />,
-  title: 'Skills',
-  description: 'Technologies and tools I excel in.',
-  items: [
-    { icon: <FaHtml5 />, name: 'HTML5' },
-    { icon: <FaCss3 />, name: 'CSS3' },
-    { icon: <FaJs />, name: 'JavaScript' },
-    { icon: <FaNodeJs />, name: 'Node.js' },
-    { icon: <SiTypescript />, name: 'TypeScript' },
-    { icon: <FaReact />, name: 'React' },
-    { icon: <SiPostgresql />, name: 'PostgreSQL' },
-    { icon: <SiMysql />, name: 'MySQL' },
-    { icon: <SiTailwindcss />, name: 'TailwindCSS' },
-    { icon: <SiGit />, name: 'Git' },
-    { icon: <SiSharp />, name: 'C#' },
-  ],
-};
+} from '@/components/ui/tooltip';
+import { about, education, experience, skills } from '@/shared/constants/data';
 
 interface SectionDisplayProps {
   title: string;

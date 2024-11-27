@@ -2,9 +2,9 @@ import { i18n, Locale } from '@/shared/config/i18n';
 
 const dictionaries = {
   en: () =>
-    import('@/shared/dictionaries/en.json').then((module) => module.default),
+    import('@/shared/constants/languages/en.json').then((module) => module.default),
   ru: () =>
-    import('@/shared/dictionaries/ru.json').then((module) => module.default),
+    import('@/shared/constants/languages/ru.json').then((module) => module.default),
 };
 
 export const getDictionary = async (locale: Locale) => {

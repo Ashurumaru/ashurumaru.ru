@@ -4,9 +4,9 @@ import React, { Suspense } from 'react';
 import { getDictionary } from '@/lib/dictionary';
 import { Locale } from '@/shared/config/i18n';
 
-const Social = dynamic(() => import('@/widgets/Social'), { ssr: false });
-const Photo = dynamic(() => import('@/widgets/Photo'), { ssr: false });
-const Stats = dynamic(() => import('@/widgets/Stats'), { ssr: false });
+const Social = dynamic(() => import('@/components/social'), { ssr: false });
+const Photo = dynamic(() => import('@/components/photo'), { ssr: false });
+const Stats = dynamic(() => import('@/components/stats'), { ssr: false });
 
 const Home: React.FC<{ params: { lang: Locale } }> = async ({
   params: { lang },

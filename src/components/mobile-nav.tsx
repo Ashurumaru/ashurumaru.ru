@@ -7,7 +7,7 @@ import { CiMenuFries } from 'react-icons/ci';
 
 import { getDictionary } from '@/lib/dictionary';
 import { Locale } from '@/shared/config/i18n';
-import { Sheet, SheetContent, SheetTrigger } from '@/shared/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const MobileNav = ({ lang }: { lang: Locale }) => {
   const pathname = usePathname();

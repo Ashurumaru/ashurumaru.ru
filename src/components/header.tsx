@@ -2,10 +2,10 @@ import Link from 'next/link';
 
 import { getDictionary } from '@/lib/dictionary';
 import { Locale } from '@/shared/config/i18n';
-import { Button } from '@/shared/ui/button';
-import MobileNav from '@/widgets/MobileNav';
+import { Button } from '@/components/ui/button';
+import MobileNav from '@/components/mobile-nav';
 
-import Nav from './Nav';
+import Nav from './nav';
 
 export default async function Header({ lang }: { lang: Locale }) {
   const { navigation } = await getDictionary(lang);

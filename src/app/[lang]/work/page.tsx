@@ -15,53 +15,10 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/shared/ui/tooltip';
-import WorkSliderBtn from '@/widgets/WorkSliderBtn';
-
-interface Project {
-  num: string;
-  category: string;
-  title: string;
-  description: string;
-  stack: { name: string }[];
-  image: string;
-  live: string;
-  github: string;
-}
-
-const projects: Project[] = [
-  {
-    num: '01',
-    category: 'text',
-    title: 'text',
-    description: 'text',
-    stack: [
-      { name: 'text' },
-      { name: 'text' },
-      { name: 'text' },
-      { name: 'text' },
-      { name: 'text' },
-    ],
-    image: '/assets/work/thumb1.png',
-    live: 'https://github.com/Ashurumaru/ashurumaru.ru',
-    github: 'https://github.com/Ashurumaru/ashurumaru.ru',
-  },
-  {
-    num: '02',
-    category: 'text',
-    title: 'text',
-    description: 'text',
-    stack: [
-      { name: 'text' },
-      { name: 'text' },
-      { name: 'text' },
-      { name: 'text' },
-    ],
-    image: '/assets/work/thumb2.png',
-    live: 'https://github.com/Ashurumaru/ashurumaru.ru',
-    github: 'https://github.com/Ashurumaru/ashurumaru.ru',
-  },
-];
+} from '@/components/ui/tooltip';
+import WorkSliderBtn from '@/components/work-slider-btn';
+import { Project } from '@/shared/types/types';
+import { projects } from '@/shared/constants/data';
 
 const Work: React.FC = () => {
   const [currentProject, setCurrentProject] = useState<Project>(projects[0]);
