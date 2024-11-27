@@ -10,7 +10,7 @@ interface WorkSliderBtnProps {
   iconsStyles?: string;
 }
 
-const WorkSliderBtn: React.FC<WorkSliderBtnProps> = ({
+const WorkSliderButton: React.FC<WorkSliderBtnProps> = ({
   containerStyles,
   btnStyles,
   iconsStyles,
@@ -29,4 +29,4 @@ const WorkSliderBtn: React.FC<WorkSliderBtnProps> = ({
   );
 };
 
-export default WorkSliderBtn;
+export default WorkSliderButton;

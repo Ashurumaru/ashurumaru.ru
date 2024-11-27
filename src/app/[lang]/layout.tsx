@@ -8,8 +8,8 @@ import React, { FC } from 'react';
 import { i18n, Locale } from '@/shared/config/i18n';
 import { jsonLd } from '@/shared/constants/seo-data';
 
-const Header = dynamic(() => import('@/components/header'), { ssr: false });
-const PageTransition = dynamic(() => import('@/components/page-transition'), {
+const Header = dynamic(() => import('@/components/layout/header'), { ssr: false });
+const PageTransition = dynamic(() => import('@/components/layout/page-transition'), {
   ssr: false,
 });
 

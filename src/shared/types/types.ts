@@ -57,3 +57,20 @@ export type Translation = {
     };
   };
 };
+
+export type WorkTranslation = {
+  title: string;
+  description: string;
+  projects: {
+    num: string;
+    category: string;
+    title: string;
+    description: string;
+    stack: {
+      name: string;
+    }[];
+    image: string;
+    live: string;
+    github: string;
+  }[];
+};

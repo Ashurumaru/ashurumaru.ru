@@ -15,31 +15,38 @@ const ServiceItem: React.FC<Service> = ({ num, title, description, href }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.4, ease: 'easeInOut' }}
-      className="flex flex-1 flex-col justify-center gap-6 group"
+      className="flex flex-col justify-between gap-6 bg-white shadow-lg rounded-2xl p-6 group hover:shadow-xl transition-all duration-300"
     >
-      <div className="flex justify-between items-center">
-        <div className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">
+      <div className="flex justify-between items-center mb-4">
+        <div className="text-4xl font-bold text-accent group-hover:text-primary transition-all duration-300">
           {num}
         </div>
         <Link
           href={href}
-          className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45"
+          className="w-[50px] h-[50px] rounded-full bg-accent group-hover:bg-primary transition-all duration-300 flex justify-center items-center transform group-hover:rotate-45"
         >
-          <BsArrowDownRight className="text-primary text-3xl" />
+          <BsArrowDownRight className="text-white text-xl" />
         </Link>
       </div>
-      <h2 className="text-[42px] font-bold float-none text-white group-hover:text-accent transition-all duration-500">
+      <h2 className="text-2xl font-semibold text-primary group-hover:text-accent transition-all duration-300 mb-4">
         {title}
       </h2>
-      <p className="text-white/60">{description}</p>
-      <div className="border-b border-white/20 w-full"></div>
+      <p className="text-sm text-gray-600 mb-6">{description}</p>
+      <div className="border-t border-gray-200 pt-4 mt-auto">
+        <Link
+          href={href}
+          className="text-accent hover:text-primary text-sm font-medium transition-all duration-300"
+        >
+          Подробнее
+        </Link>
+      </div>
     </motion.div>
   );
 };
 
 const Services: React.FC<{ params: { lang: Locale } }> = ({
-  params: { lang },
-}) => {
+                                                            params: { lang },
+                                                          }) => {
   const [services, setServices] = useState<Service[]>([]);
 
   useEffect(() => {
@@ -112,7 +119,7 @@ const Services: React.FC<{ params: { lang: Locale } }> = ({
             opacity: 1,
             transition: { delay: 0.3, duration: 0.4, ease: 'easeInOut' },
           }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[40px]"
         >
           {services.map((service) => (
             <ServiceItem

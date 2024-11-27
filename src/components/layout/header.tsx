@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getDictionary } from '@/lib/dictionary';
 import { Locale } from '@/shared/config/i18n';
 import { Button } from '@/components/ui/button';
-import MobileNav from '@/components/mobile-nav';
+import MobileNav from '@/components/layout/mobile-nav';
 
 import Nav from './nav';
 

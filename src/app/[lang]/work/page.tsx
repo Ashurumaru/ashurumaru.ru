@@ -5,7 +5,7 @@ import 'swiper/css';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsArrowUpRight, BsGithub } from 'react-icons/bs';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperClass } from 'swiper/types';
@@ -16,17 +16,38 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import WorkSliderBtn from '@/components/work-slider-btn';
-import { Project } from '@/shared/types/types';
-import { projects } from '@/shared/constants/data';
+import WorkSliderButton from '@/components/work/work-slider-button';
+import { getDictionary } from '@/lib/dictionary';
+import { Locale } from '@/shared/config/i18n';
+import { Project, WorkTranslation } from '@/shared/types/types';
 
-const Work: React.FC = () => {
-  const [currentProject, setCurrentProject] = useState<Project>(projects[0]);
+type WorkPageProps = {
+  params: {
+    lang: Locale;
+  };
+};
+
+const Work: React.FC<WorkPageProps> = ({ params: { lang } }) => {
+  const [translations, setTranslations] = useState<WorkTranslation | null>(null);
+  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    const fetchTranslations = async () => {
+      const dictionary = await getDictionary(lang);
+      const workTranslations: WorkTranslation = dictionary.work;
+      setTranslations(workTranslations);
+      setCurrentProject(workTranslations.projects[0]);
+    };
+
+    fetchTranslations();
+  }, [lang]);
 
   const handleSlideChange = (swiper: SwiperClass) => {
     const currentIndex = swiper.activeIndex;
-    setCurrentProject(projects[currentIndex]);
+    setCurrentProject(translations?.projects[currentIndex] || null); // Fallback to null if undefined
   };
+
+  if (!translations || !currentProject) return null;
 
   return (
     <motion.section
@@ -47,12 +68,12 @@ const Work: React.FC = () => {
               className="h-[320px] md:h-[420px] lg:h-[520px] mb-12"
               onSlideChange={handleSlideChange}
             >
-              {projects.map((project, index) => (
+              {translations.projects.map((project, index) => (
                 <SwiperSlide key={index} className="w-full">
                   <ProjectSlide project={project} />
                 </SwiperSlide>
               ))}
-              <WorkSliderBtn
+              <WorkSliderButton
                 containerStyles="flex gap-2 absolute right-0 bottom-20 lg:bottom-0 z-20 w-full justify-between lg:w-max lg:justify-none"
                 btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
               />
@@ -80,7 +101,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => (
         {project.num}
       </div>
       <h2 className="text-[24px] sm:text-[32px] md:text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-        {project.category}
+        {project.title}
       </h2>
       <p className="text-white/60 text-sm md:text-base">
         {project.description}
@@ -89,23 +110,22 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => (
         {project.stack.map((item, index) => (
           <li key={index} className="text-sm md:text-lg text-accent">
             {item.name}
-            {index !== project.stack.length - 1 && ','}
+            {index !== project.stack.length - 1 && <span className="px-2">/</span>}
           </li>
         ))}
       </ul>
-      <div className="border border-white/20"></div>
-      <div className="flex items-center gap-4">
+      <div className="flex gap-4">
         <ProjectLink
           href={project.live}
           icon={<BsArrowUpRight />}
-          tooltipText="Live Project"
-          ariaLabel="Live Project"
+          tooltipText="Live Website"
+          ariaLabel="Live Website"
         />
         <ProjectLink
           href={project.github}
           icon={<BsGithub />}
-          tooltipText="Github Repo"
-          ariaLabel="Github Repo"
+          tooltipText="GitHub Repo"
+          ariaLabel="GitHub Repo"
         />
       </div>
     </div>
@@ -144,11 +164,11 @@ interface ProjectLinkProps {
 }
 
 const ProjectLink: React.FC<ProjectLinkProps> = ({
-  href,
-  icon,
-  tooltipText,
-  ariaLabel,
-}) => (
+                                                   href,
+                                                   icon,
+                                                   tooltipText,
+                                                   ariaLabel,
+                                                 }) => (
   <TooltipProvider delayDuration={180}>
     <Link href={href} aria-label={ariaLabel}>
       <Tooltip>

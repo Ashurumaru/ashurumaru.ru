@@ -134,5 +134,43 @@
         "sharp": { "name": "C#", "icon": "SiSharp" }
       }
     }
+  },
+  "work": {
+    "title": "Портфолио",
+    "description": "Вот некоторые проекты, над которыми я работал:",
+    "projects": [
+      {
+        "num": "01",
+        "category": "Веб-разработка",
+        "title": "Личный веб-сайт",
+        "description": "Адаптивный персональный портфолио-сайт, демонстрирующий мои работы.",
+        "stack": [
+          { "name": "Next.js" },
+          { "name": "Tailwind CSS" },
+          { "name": "TypeScript" },
+          { "name": "React" },
+          { "name": "Vercel" }
+        ],
+        "image": "/assets/work/thumb1.png",
+        "live": "https://github.com/Ashurumaru/ashurumaru.ru",
+        "github": "https://github.com/Ashurumaru/ashurumaru.ru"
+      },
+      {
+        "num": "02",
+        "category": "Мобильное приложение",
+        "title": "Приложение погоды",
+        "description": "Мобильное приложение для прогноза погоды, разработанное на React Native.",
+        "stack": [
+          { "name": "React Native" },
+          { "name": "Firebase" },
+          { "name": "Expo" },
+          { "name": "Redux" },
+          { "name": "Tailwind CSS" }
+        ],
+        "image": "/assets/work/thumb2.png",
+        "live": "https://github.com/Ashurumaru/weather-app",
+        "github": "https://github.com/Ashurumaru/weather-app"
+      }
+    ]
   }
 }
