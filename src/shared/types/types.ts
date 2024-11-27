@@ -18,31 +18,42 @@ export interface Service {
   href: string;
 }
 
-export interface InfoField {
-  fieldName: string;
-  fieldValue: string;
-}
-
-export interface ExperienceItem {
-  company: string;
-  position: string;
+ type Item = {
   duration: string;
-}
-
-export interface EducationItem {
-  institution: string;
-  degree: string;
-  duration: string;
-}
-
-export interface SkillItem {
-  icon: React.ReactNode;
-  name: string;
-}
-
-export interface SectionData<T> {
+  position?: string;
+  company?: string;
+  institution?: string;
+  degree?: string;
+  name?: string;
   icon?: React.ReactNode;
-  title: string;
-  description: string;
-  items?: T[];
-}
+};
+
+export type Translation = {
+  resume: {
+    experience: {
+      title: string;
+      description: string;
+      icon: React.ReactNode;
+      items: Item[];
+    };
+    education: {
+      title: string;
+      description: string;
+      icon: React.ReactNode;
+      items: Item[];
+    };
+    skills: {
+      title: string;
+      description: string;
+      icon: React.ReactNode;
+      items: Record<string, { name: string; icon: React.ReactNode }>;
+    };
+    about: {
+      title: string;
+      description: string;
+      icon: React.ReactNode;
+      items: Record<string, string>;
+      values: Record<string, string>;
+    };
+  };
+};

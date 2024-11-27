@@ -10,7 +10,7 @@
     "home": "Home",
     "services": "Services",
     "resume": "Resume",
-    "work": "Work",
+    "work": "Portfolio",
     "contact": "Contact me"
   },
 
@@ -68,6 +68,7 @@
     "about": {
       "title": "About Me",
       "description": "A brief description about myself.",
+      "icon": "FaUser",
       "items": {
         "name": "Name",
         "phone": "Phone",
@@ -90,12 +91,17 @@
 
     "experience": {
       "title": "Experience",
-      "description": "Although I don't have professional experience yet, I am actively honing my skills and eagerly looking forward to contributing to impactful projects in the near future."
+      "description": "Although I don't have professional experience yet, I am actively honing my skills and eagerly looking forward to contributing to impactful projects in the near future.",
+      "icon": "FaBriefcase",
+      "items": [
+
+      ]
     },
 
     "education": {
       "title": "Education",
       "description": "My educational background.",
+      "icon": "FaGraduationCap",
       "items": [
         {
           "institution": "Siberian State University of Telecommunications and Informatics (branch)",
@@ -113,18 +119,19 @@
     "skills": {
       "title": "Skills",
       "description": "Technologies and tools I excel in.",
+      "icon": "GiSkills",
       "items": {
-        "html": "HTML5",
-        "css": "CSS3",
-        "js": "JavaScript",
-        "node": "Node.js",
-        "typescript": "TypeScript",
-        "react": "React",
-        "postgresql": "PostgreSQL",
-        "mysql": "MySQL",
-        "tailwindcss": "TailwindCSS",
-        "git": "Git",
-        "sharp": "C#"
+        "html": { "name": "HTML5", "icon": "FaHtml5" },
+        "css": { "name": "CSS3", "icon": "FaCss3" },
+        "js": { "name": "JavaScript", "icon": "FaJs" },
+        "node": { "name": "Node.js", "icon": "FaNodeJs" },
+        "typescript": { "name": "TypeScript", "icon": "SiTypescript" },
+        "react": { "name": "React", "icon": "FaReact" },
+        "postgresql": { "name": "PostgreSQL", "icon": "SiPostgresql" },
+        "mysql": { "name": "MySQL", "icon": "SiMysql" },
+        "tailwindcss": { "name": "TailwindCSS", "icon": "SiTailwindcss" },
+        "git": { "name": "Git", "icon": "SiGit" },
+        "sharp": { "name": "C#", "icon": "SiSharp" }
       }
     }
   }

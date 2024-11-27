@@ -10,7 +10,7 @@
     "home": "Главная",
     "services": "Услуги",
     "resume": "Резюме",
-    "work": "Работы",
+    "work": "Портфолио",
     "contact": "Связь со мной"
   },
 
@@ -68,6 +68,7 @@
     "about": {
       "title": "Обо мне",
       "description": "Краткое описание обо мне.",
+      "icon": "FaUser",
       "items": {
         "name": "Имя",
         "phone": "Телефон",
@@ -90,12 +91,17 @@
 
     "experience": {
       "title": "Опыт",
-      "description": "Хотя у меня еще нет профессионального опыта, я активно развиваю свои навыки и с нетерпением жду возможности участвовать в значимых проектах в ближайшем будущем."
+      "description": "Хотя у меня еще нет профессионального опыта, я активно развиваю свои навыки и с нетерпением жду возможности участвовать в значимых проектах в ближайшем будущем.",
+      "icon": "FaBriefcase",
+      "items": [
+
+      ]
     },
 
     "education": {
       "title": "Образование",
       "description": "Мое образование.",
+      "icon": "FaGraduationCap",
       "items": [
         {
           "institution": "Сибирский государственный университет телекоммуникаций и информатики (филиал)",
@@ -113,18 +119,19 @@
     "skills": {
       "title": "Навыки",
       "description": "Технологии и инструменты, в которых я хорошо разбираюсь.",
+      "icon": "GiSkills",
       "items": {
-        "html": "HTML5",
-        "css": "CSS3",
-        "js": "JavaScript",
-        "node": "Node.js",
-        "typescript": "TypeScript",
-        "react": "React",
-        "postgresql": "PostgreSQL",
-        "mysql": "MySQL",
-        "tailwindcss": "TailwindCSS",
-        "git": "Git",
-        "sharp": "C#"
+        "html": { "name": "HTML5", "icon": "FaHtml5" },
+        "css": { "name": "CSS3", "icon": "FaCss3" },
+        "js": { "name": "JavaScript", "icon": "FaJs" },
+        "node": { "name": "Node.js", "icon": "FaNodeJs" },
+        "typescript": { "name": "TypeScript", "icon": "SiTypescript" },
+        "react": { "name": "React", "icon": "FaReact" },
+        "postgresql": { "name": "PostgreSQL", "icon": "SiPostgresql" },
+        "mysql": { "name": "MySQL", "icon": "SiMysql" },
+        "tailwindcss": { "name": "TailwindCSS", "icon": "SiTailwindcss" },
+        "git": { "name": "Git", "icon": "SiGit" },
+        "sharp": { "name": "C#", "icon": "SiSharp" }
       }
     }
   }
