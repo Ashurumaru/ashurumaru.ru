@@ -19,3 +19,4 @@ export const iconMapping: Record<string, React.ReactNode> = {
   FaGraduationCap: <FaGraduationCap className="text-3xl text-accent" />,
   GiSkills:  <GiSkills className="text-3xl text-accent" />,
 };
+

@@ -138,6 +138,25 @@
   "work": {
     "title": "Portfolio",
     "description": "Here are some of the projects I've worked on:",
+    "categories": {
+      "webDevelopment": "Web Development",
+      "appDevelopment": "App Development",
+      "design": "Design",
+      "businessCardSite": "Business Card Website",
+      "telegramBot": "Telegram Bot Development",
+      "landingPage": "Landing Page Development"
+    },
+    "filterProjects": "Filter projects...",
+    "category": "Category",
+    "resetFilters": "Reset Filters",
+    "noResults": "No Results",
+    "page": "Page",
+    "of": "of",
+    "firstPage": "Go to first page",
+    "previousPage": "Go to previous page",
+    "nextPage": "Go to next page",
+    "lastPage": "Go to last page",
+    "rowsPerPage": "Rows per page",
     "projects": [
       {
         "num": "01",
@@ -151,25 +170,38 @@
           { "name": "React" },
           { "name": "Vercel" }
         ],
-        "image": "/assets/work/thumb1.png",
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
         "live": "https://github.com/Ashurumaru/ashurumaru.ru",
-        "github": "https://github.com/Ashurumaru/ashurumaru.ru"
+        "github": "https://github.com/Ashurumaru/ashurumaru.ru",
+        "startDate": "2022-01-01",
+        "endDate": "2022-06-01"
       },
       {
-        "num": "02",
-        "category": "Mobile App",
-        "title": "Weather App",
-        "description": "A mobile weather application built with React Native.",
+        "num": "01",
+        "category": "Web Development",
+        "title": "Personal Website",
+        "description": "A responsive personal portfolio website showcasing my work.",
         "stack": [
-          { "name": "React Native" },
-          { "name": "Firebase" },
-          { "name": "Expo" },
-          { "name": "Redux" },
-          { "name": "Tailwind CSS" }
+          { "name": "Next.js" },
+          { "name": "Tailwind CSS" },
+          { "name": "TypeScript" },
+          { "name": "React" },
+          { "name": "Vercel" }
         ],
-        "image": "/assets/work/thumb2.png",
-        "live": "https://github.com/Ashurumaru/weather-app",
-        "github": "https://github.com/Ashurumaru/weather-app"
+        "image": "/assets/work/thumb1.png",
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/ashurumaru.ru",
+        "github": "https://github.com/Ashurumaru/ashurumaru.ru",
+        "startDate": "2022-01-01",
+        "endDate": "2022-06-01"
       }
     ]
   }

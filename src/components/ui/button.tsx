@@ -13,11 +13,13 @@ const buttonVariants = cva(
         primary: 'bg-primary text-white',
         outline:
           'border border-accent bg-transparent text-accent hover:bg-accent hover:text-primary',
+        ghost: 'border border-accent text-accent hover:bg-accent-hover hover:text-primary bg-transparent', // Added ghost variant
       },
       size: {
         default: 'h-[44px] px-6',
         md: 'h-[48px] px-6',
         lg: 'h-[56px] px-8 text-sm uppercase tracking-[2px]',
+        sm: 'h-[32px] px-4 text-sm', // Added small size
       },
     },
     defaultVariants: {

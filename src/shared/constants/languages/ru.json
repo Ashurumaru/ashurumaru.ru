@@ -138,10 +138,29 @@
   "work": {
     "title": "Портфолио",
     "description": "Вот некоторые проекты, над которыми я работал:",
+    "categories": {
+      "webDevelopment": "Веб-разработка",
+      "appDevelopment": "Разработка приложений",
+      "design": "Дизайн",
+      "businessCardSite": "Сайт-визитка",
+      "telegramBot": "Разработка Telegram-бота",
+      "landingPage": "Разработка лендинга"
+    },
+    "filterProjects": "Фильтровать проекты...",
+    "category": "Категория",
+    "resetFilters": "Сбросить фильтры",
+    "noResults": "Нет данных",
+    "page": "Страница",
+    "of": "из",
+    "firstPage": "Перейти на первую страницу",
+    "previousPage": "Перейти на предыдущую страницу",
+    "nextPage": "Перейти на следующую страницу",
+    "lastPage": "Перейти на последнюю страницу",
+    "rowsPerPage": "Строк на странице",
     "projects": [
       {
         "num": "01",
-        "category": "Веб-разработка",
+        "category": "webDevelopment",
         "title": "Личный веб-сайт",
         "description": "Адаптивный персональный портфолио-сайт, демонстрирующий мои работы.",
         "stack": [
@@ -151,9 +170,15 @@
           { "name": "React" },
           { "name": "Vercel" }
         ],
-        "image": "/assets/work/thumb1.png",
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
         "live": "https://github.com/Ashurumaru/ashurumaru.ru",
-        "github": "https://github.com/Ashurumaru/ashurumaru.ru"
+        "github": "https://github.com/Ashurumaru/ashurumaru.ru",
+        "startDate": "2022-01-01",
+        "endDate": "2022-06-01"
       },
       {
         "num": "02",
@@ -167,9 +192,15 @@
           { "name": "Redux" },
           { "name": "Tailwind CSS" }
         ],
-        "image": "/assets/work/thumb2.png",
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
         "live": "https://github.com/Ashurumaru/weather-app",
-        "github": "https://github.com/Ashurumaru/weather-app"
+        "github": "https://github.com/Ashurumaru/weather-app",
+        "startDate": "2022-01-01",
+        "endDate": "2022-06-01"
       }
     ]
   }

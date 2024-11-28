@@ -1,16 +1,5 @@
 import React from 'react';
 
-export interface Project {
-  num: string;
-  category: string;
-  title: string;
-  description: string;
-  stack: { name: string }[];
-  image: string;
-  live: string;
-  github: string;
-}
-
 export interface Service {
   num: string;
   title: string;
@@ -58,19 +47,41 @@ export type Translation = {
   };
 };
 
+export interface Project {
+  num: string;
+  category: string;
+  title: string;
+  description: string;
+  stack: { name: string }[];
+  images: string[];
+  live: string;
+  github: string;
+  startDate: string;
+  endDate: string;
+}
+
 export type WorkTranslation = {
   title: string;
   description: string;
-  projects: {
-    num: string;
-    category: string;
-    title: string;
-    description: string;
-    stack: {
-      name: string;
-    }[];
-    image: string;
-    live: string;
-    github: string;
-  }[];
+  categories: {
+    webDevelopment: string;
+    appDevelopment: string;
+    design: string;
+    businessCardSite: string;
+    telegramBot: string;
+    landingPage: string;
+  };
+  filterProjects: string;
+  category: string;
+  resetFilters: string;
+  noResults: string;
+
+  page: string;
+  of: string;
+  firstPage: string;
+  previousPage: string;
+  nextPage: string;
+  lastPage: string;
+  rowsPerPage: string;
+  projects: Project[];
 };
