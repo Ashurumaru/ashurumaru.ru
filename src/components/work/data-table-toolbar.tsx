@@ -1,14 +1,12 @@
-'use client';
-
-import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableFacetedFilter } from "@/components/ui/data-table-faceted-filter";
-import { getDictionary } from "@/lib/dictionary";
-import { Locale } from "@/shared/config/i18n";
-import React from 'react';
-import { WorkTranslation } from '@/shared/types/types';
+import { Button } from "@/components/ui/button";
+import { Cross2Icon } from "@radix-ui/react-icons";
+import { WorkTranslation } from "@/shared/types/types";
+import { useState, useEffect } from "react";
+import { Locale } from '@/shared/config/i18n';
+import { getDictionary } from '@/lib/dictionary';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -18,9 +16,9 @@ interface DataTableToolbarProps<TData> {
 export function DataTableToolbar<TData>({ table, language }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
-  const [translations, setTranslations] = React.useState<WorkTranslation | null>(null);
+  const [translations, setTranslations] = useState<WorkTranslation | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const loadTranslations = async () => {
       const dict = await getDictionary(language);
       setTranslations(dict.work);
@@ -63,9 +61,9 @@ export function DataTableToolbar<TData>({ table, language }: DataTableToolbarPro
       <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder={translations.filterProjects}
-          value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
+          value={(table.getState().globalFilter as string) ?? ""}
           onChange={(event) =>
-            table.getColumn("title")?.setFilterValue(event.target.value)
+            table.setGlobalFilter(event.target.value)
           }
           className="h-8 w-[150px] lg:w-[250px] text-white placeholder:text-gray-400 bg-[#2a2a33] border border-[#444] rounded-lg"
         />

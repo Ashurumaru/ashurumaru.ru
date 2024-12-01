@@ -52,18 +52,20 @@ export const columns: ColumnDef<Project>[] = [
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title="Images" />
         ),
-        cell: ({ row }) => row.original.images.length > 0 ? (
-          <div className="flex space-x-2">
-              <Image
-                src={row.original.images[0]}
-                alt="Project image"
-                width={64}
-                height={64}
-                className="rounded-md shadow-md"
-              />
-          </div>
-        ) : (
-          <span className="text-white/60">No images</span>
+        cell: ({ row }) => (
+          row.original.images.length > 0 ? (
+            <div className="flex space-x-2">
+                <Image
+                  src={row.original.images[0]}
+                  alt="Project image"
+                  width={86}
+                  height={86}
+                  className="rounded-md shadow-md"
+                />
+            </div>
+          ) : (
+            <span className="text-white/60">No images</span>
+          )
         ),
     },
     {
@@ -73,8 +75,8 @@ export const columns: ColumnDef<Project>[] = [
         ),
         cell: ({ row }) => (
           <span className="text-white">
-            {new Date(row.original.startDate).toLocaleDateString()}
-          </span>
+        {new Date(row.original.startDate).toLocaleDateString()}
+      </span>
         ),
     },
     {
@@ -84,8 +86,10 @@ export const columns: ColumnDef<Project>[] = [
         ),
         cell: ({ row }) => (
           <span className="text-white">
-            {row.original.endDate ? new Date(row.original.endDate).toLocaleDateString() : "Ongoing"}
-          </span>
+        {row.original.endDate
+          ? new Date(row.original.endDate).toLocaleDateString()
+          : "Ongoing"}
+      </span>
         ),
     },
 ];

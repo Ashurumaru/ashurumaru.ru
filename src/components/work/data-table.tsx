@@ -1,30 +1,17 @@
-'use client';
-
 import * as React from "react";
 import {
+  useReactTable,
   ColumnDef,
-  ColumnFiltersState,
   SortingState,
   VisibilityState,
-  flexRender,
+  ColumnFiltersState,
   getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
+  flexRender,
+} from '@tanstack/react-table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { DataTablePagination } from "@/components/ui/data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 import { WorkTranslation, Project } from "@/shared/types/types";
@@ -37,19 +24,13 @@ interface DataTableProps<TData extends Project | WorkTranslation, TValue> {
   language: Locale;
 }
 
-export function DataTable<TData extends Project | WorkTranslation, TValue>({
-                                                                             columns,
-                                                                             data,
-                                                                             language,
-                                                                           }: DataTableProps<TData, TValue>) {
-  // Types for row selection and state
+export function DataTable<TData extends Project | WorkTranslation, TValue>({ columns, data, language }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState<Record<string, boolean>>({});
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [translations, setTranslations] = React.useState<WorkTranslation | null>(null);
 
-  // Fetch translations on language change
   React.useEffect(() => {
     const loadTranslations = async () => {
       const dict = await getDictionary(language);
@@ -59,9 +40,9 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({
     loadTranslations();
   }, [language]);
 
-  // Only use table data if translations are available
   const tableData = translations ? data : [];
 
+  // Обновляем таблицу с использованием глобального фильтра
   const table = useReactTable({
     data: tableData,
     columns,
@@ -80,8 +61,26 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
+    globalFilterFn: (row, columnId, filterValue) => {
+      const searchValue = filterValue.toLowerCase();
+
+      const rowData = [
+        row.getValue("title"),
+        row.getValue("category"),
+        row.getValue("description"),
+        (row.getValue("stack") as { name: string }[])
+          .map((tech) => tech.name.toLowerCase())
+          .join(" "),
+      ];
+
+      return rowData.some((value) => {
+        if (typeof value === "string") {
+          return value.toLowerCase().includes(searchValue);
+        }
+        return false;
+      });
+    },
+
   });
 
   // Loading state for translations
@@ -89,7 +88,6 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({
     return (
       <div className="flex justify-center items-center h-full">
         <span>Loading...</span>
-        {/* You can replace this with a spinner or loading indicator for better UX */}
       </div>
     );
   }
