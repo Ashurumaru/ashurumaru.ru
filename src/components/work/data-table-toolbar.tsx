@@ -2,11 +2,8 @@
 
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DataTableViewOptions } from "@/components/ui/data-table-view-options";
-
 import { DataTableFacetedFilter } from "@/components/ui/data-table-faceted-filter";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale } from "@/shared/config/i18n";
@@ -36,33 +33,33 @@ export function DataTableToolbar<TData>({ table, language }: DataTableToolbarPro
 
   const localizedCategories = [
     {
-      value: "webDevelopment",
+      value: translations.categories.webDevelopment,
       label: translations.categories.webDevelopment,
     },
     {
-      value: "appDevelopment",
+      value: translations.categories.appDevelopment,
       label: translations.categories.appDevelopment,
     },
     {
-      value: "design",
+      value: translations.categories.design,
       label: translations.categories.design,
     },
     {
-      value: "businessCardSite",
+      value: translations.categories.businessCardSite,
       label: translations.categories.businessCardSite,
     },
     {
-      value: "telegramBot",
+      value: translations.categories.telegramBot,
       label: translations.categories.telegramBot,
     },
     {
-      value: "landingPage",
+      value: translations.categories.landingPage,
       label: translations.categories.landingPage,
     },
   ];
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between bg-[#1c1c22] p-4 rounded-lg shadow-md">
       <div className="flex flex-1 items-center space-x-2">
         <Input
           placeholder={translations.filterProjects}
@@ -70,7 +67,7 @@ export function DataTableToolbar<TData>({ table, language }: DataTableToolbarPro
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="h-8 w-[150px] lg:w-[250px]"
+          className="h-8 w-[150px] lg:w-[250px] text-white placeholder:text-gray-400 bg-[#2a2a33] border border-[#444] rounded-lg"
         />
         {table.getColumn("category") && (
           <DataTableFacetedFilter
@@ -81,16 +78,15 @@ export function DataTableToolbar<TData>({ table, language }: DataTableToolbarPro
         )}
         {isFiltered && (
           <Button
-            variant="ghost"
+            variant="outline"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3"
+            className="h-8 px-3 bg-transparent text-accent hover:bg-accent-hover"
           >
             {translations.resetFilters}
             <Cross2Icon className="ml-2 h-4 w-4" />
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
     </div>
   );
 }

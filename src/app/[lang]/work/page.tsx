@@ -24,7 +24,7 @@ const Work: React.FC<WorkPageProps> = ({ params: { lang } }) => {
         setIsLoading(true);
         const dictionary = await getDictionary(lang);
         setTranslations(dictionary.work);
-      } catch (err) {
+      } catch {
         setError('Не удалось загрузить данные');
       } finally {
         setIsLoading(false);

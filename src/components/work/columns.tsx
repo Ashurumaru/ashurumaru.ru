@@ -6,25 +6,31 @@ import { DataTableColumnHeader } from "@/components/ui/data-table-column-header"
 
 export const columns: ColumnDef<Project>[] = [
     {
-        accessorKey: "category",
-        header: ({ column }) => (
-          <DataTableColumnHeader column={column} title="Category" />
-        ),
-        cell: ({ row }) => row.original.category || "N/A",
-    },
-    {
         accessorKey: "title",
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title="Title" />
         ),
-        cell: ({ row }) => row.original.title,
+        cell: ({ row }) => (
+          <h3 className="text-xl text-white">{row.original.title}</h3>
+        ),
+    },
+    {
+        accessorKey: "category",
+        header: ({ column }) => (
+          <DataTableColumnHeader column={column} title="Category" />
+        ),
+        cell: ({ row }) => (
+          <span className="text-white">{row.original.category || "N/A"}</span>
+        ),
     },
     {
         accessorKey: "description",
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title="Description" />
         ),
-        cell: ({ row }) => row.original.description,
+        cell: ({ row }) => (
+          <p className="text-white/80 text-sm">{row.original.description}</p>
+        ),
     },
     {
         accessorKey: "stack",
@@ -32,9 +38,9 @@ export const columns: ColumnDef<Project>[] = [
           <DataTableColumnHeader column={column} title="Tech Stack" />
         ),
         cell: ({ row }) => (
-          <div>
+          <div className="flex flex-wrap gap-2">
               {row.original.stack.map((tech, index) => (
-                <Badge key={index} variant="outline" className="mr-2">
+                <Badge key={index} variant="outline" className="bg-[#232329] text-accent border-accent hover:bg-accent/10">
                     {tech.name}
                 </Badge>
               ))}
@@ -53,11 +59,11 @@ export const columns: ColumnDef<Project>[] = [
                 alt="Project image"
                 width={64}
                 height={64}
-                className="rounded-md"
+                className="rounded-md shadow-md"
               />
           </div>
         ) : (
-          "No images"
+          <span className="text-white/60">No images</span>
         ),
     },
     {
@@ -65,13 +71,21 @@ export const columns: ColumnDef<Project>[] = [
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title="Start Date" />
         ),
-        cell: ({ row }) => new Date(row.original.startDate).toLocaleDateString(),
+        cell: ({ row }) => (
+          <span className="text-white">
+            {new Date(row.original.startDate).toLocaleDateString()}
+          </span>
+        ),
     },
     {
         accessorKey: "endDate",
         header: ({ column }) => (
           <DataTableColumnHeader column={column} title="End Date" />
         ),
-        cell: ({ row }) => row.original.endDate ? new Date(row.original.endDate).toLocaleDateString() : "Ongoing",
+        cell: ({ row }) => (
+          <span className="text-white">
+            {row.original.endDate ? new Date(row.original.endDate).toLocaleDateString() : "Ongoing"}
+          </span>
+        ),
     },
 ];

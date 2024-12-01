@@ -42,12 +42,14 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({
                                                                              data,
                                                                              language,
                                                                            }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({});
+  // Types for row selection and state
+  const [rowSelection, setRowSelection] = React.useState<Record<string, boolean>>({});
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [translations, setTranslations] = React.useState<WorkTranslation | null>(null);
 
+  // Fetch translations on language change
   React.useEffect(() => {
     const loadTranslations = async () => {
       const dict = await getDictionary(language);
@@ -57,6 +59,7 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({
     loadTranslations();
   }, [language]);
 
+  // Only use table data if translations are available
   const tableData = translations ? data : [];
 
   const table = useReactTable({
@@ -81,8 +84,14 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
+  // Loading state for translations
   if (!translations) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-full">
+        <span>Loading...</span>
+        {/* You can replace this with a spinner or loading indicator for better UX */}
+      </div>
+    );
   }
 
   return (
