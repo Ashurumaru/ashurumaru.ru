@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react";
 import {
   useReactTable,
@@ -17,6 +19,7 @@ import { DataTableToolbar } from "./data-table-toolbar";
 import { WorkTranslation, Project } from "@/shared/types/types";
 import { getDictionary } from "@/lib/dictionary";
 import { Locale } from "@/shared/config/i18n";
+import ProjectModal from "@/components/work/project-modal";
 
 interface DataTableProps<TData extends Project | WorkTranslation, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -30,7 +33,10 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [translations, setTranslations] = React.useState<WorkTranslation | null>(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
 
+  // Загрузка переводов
   React.useEffect(() => {
     const loadTranslations = async () => {
       const dict = await getDictionary(language);
@@ -40,9 +46,9 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
     loadTranslations();
   }, [language]);
 
+  // Если переводов нет, показываем сообщение о загрузке
   const tableData = translations ? data : [];
 
-  // Обновляем таблицу с использованием глобального фильтра
   const table = useReactTable({
     data: tableData,
     columns,
@@ -63,27 +69,16 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
     getSortedRowModel: getSortedRowModel(),
     globalFilterFn: (row, columnId, filterValue) => {
       const searchValue = filterValue.toLowerCase();
-
       const rowData = [
         row.getValue("title"),
         row.getValue("category"),
         row.getValue("description"),
-        (row.getValue("stack") as { name: string }[])
-          .map((tech) => tech.name.toLowerCase())
-          .join(" "),
+        (row.getValue("stack") as { name: string }[]).map((tech) => tech.name.toLowerCase()).join(" "),
       ];
-
-      return rowData.some((value) => {
-        if (typeof value === "string") {
-          return value.toLowerCase().includes(searchValue);
-        }
-        return false;
-      });
+      return rowData.some((value) => typeof value === "string" && value.toLowerCase().includes(searchValue));
     },
-
   });
 
-  // Loading state for translations
   if (!translations) {
     return (
       <div className="flex justify-center items-center h-full">
@@ -91,6 +86,18 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
       </div>
     );
   }
+
+  // Открытие модального окна с выбранным проектом
+  const openModal = (project: Project) => {
+    setSelectedProject(project); // Устанавливаем выбранный проект
+    setIsModalOpen(true); // Открываем модальное окно
+  };
+
+  // Закрытие модального окна
+  const closeModal = () => {
+    setIsModalOpen(false); // Закрываем модальное окно
+    setSelectedProject(null); // Сбрасываем выбранный проект
+  };
 
   return (
     <div className="space-y-4">
@@ -112,15 +119,27 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+              table.getRowModel().rows.map((row) => {
+                const project = row.original;
+                return (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    onClick={() => {
+                      if ('stack' in project && 'images' in project && 'live' in project) {
+                        openModal(project); // Открытие модального окна при клике на проект
+                      }
+                    }}
+                    className="transition-colors cursor-pointer hover:bg-accent/10"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                );
+              })
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
@@ -132,6 +151,11 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
         </Table>
       </div>
       <DataTablePagination data={translations} table={table} />
+
+      {/* Модальное окно для проекта */}
+      {selectedProject && (
+        <ProjectModal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} />
+      )}
     </div>
   );
 }

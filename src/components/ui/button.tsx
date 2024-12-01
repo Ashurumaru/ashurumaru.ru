@@ -19,7 +19,8 @@ const buttonVariants = cva(
         default: 'h-[44px] px-6',
         md: 'h-[48px] px-6',
         lg: 'h-[56px] px-8 text-sm uppercase tracking-[2px]',
-        sm: 'h-[32px] px-4 text-sm', // Added small size
+        sm: 'h-[32px] px-4 text-sm',
+        icon: 'h-[32px] w-[32px] flex items-center justify-center',
       },
     },
     defaultVariants: {

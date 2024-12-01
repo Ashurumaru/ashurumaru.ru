@@ -52,6 +52,7 @@ export interface Project {
   category: string;
   title: string;
   description: string;
+  longDescription?: string;
   stack: { name: string }[];
   images: string[];
   live: string;
