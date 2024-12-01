@@ -45,7 +45,7 @@ export function DataTablePagination<TData>({
                       <SelectTrigger className="h-8 w-[70px] bg-background text-foreground border border-border-strong rounded-md focus:ring-2 focus:ring-primary-500">
                           <SelectValue placeholder={String(table.getState().pagination.pageSize)} />
                       </SelectTrigger>
-                      <SelectContent side="top" className="bg-background text-foreground rounded-md border border-border-strong">
+                      <SelectContent side="top" className="bg-white text-foreground rounded-md border border-border-strong">
                           {[10, 20, 30, 40, 50].map((pageSize) => (
                             <SelectItem key={pageSize} value={`${pageSize}`} className="hover:bg-accent hover:text-accent-foreground">
                                 {pageSize}

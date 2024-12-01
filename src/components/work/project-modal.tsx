@@ -4,21 +4,22 @@ import * as React from "react"
 import { Credenza, CredenzaContent, CredenzaHeader, CredenzaTitle, CredenzaBody, CredenzaFooter, CredenzaClose } from "@/components/ui/сredenza"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { Button } from "@/components/ui/button"
-import { Project } from "@/shared/types/types"
+import { Project, WorkTranslation } from '@/shared/types/types';
 import Image from 'next/image';
 
 interface ProjectModalProps {
   project: Project | null
   isOpen: boolean
   onClose: () => void
+  data: WorkTranslation
 }
 
-const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
+const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => {
   if (!project) {
     return null
   }
 
-  const { num, title, description, longDescription, stack, images, live, github, startDate, endDate } = project
+  const { title, description, longDescription, stack, images, live, github, startDate, endDate } = project
 
   const projectDescription = longDescription || description
 
@@ -40,7 +41,8 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem key={index} className="flex justify-center">
-                  <Image src={image} alt={`Project Image ${index + 1}`} className="w-full max-h-96 object-cover rounded-md shadow-md" />
+                  <Image src={image} alt={`Project Image ${index + 1}`}
+                         className="w-full max-h-96 object-cover rounded-md shadow-md" />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -51,13 +53,13 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
           {/* Описание проекта */}
           <div className="mb-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Описание</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">{data.description}</h3>
             <p className="text-gray-600">{projectDescription}</p>
           </div>
 
           {/* Стек технологий */}
           <div className="mb-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Технологии</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">{data.technology}</h3>
             <div className="flex flex-wrap gap-2">
               {stack.map((tech, index) => (
                 <span key={index} className="bg-gray-200 text-gray-800 py-1 px-3 rounded-full text-sm">
@@ -68,8 +70,8 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
           </div>
 
           {/* Период проекта */}
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Период работы</h3>
+          <div className="mb-4 flex items-center">
+            <h3 className="text-xl font-semibold text-gray-800 mr-2">{data.work_period}</h3>
             <p className="text-gray-600">{`${startDate} - ${endDate}`}</p>
           </div>
         </CredenzaBody>
@@ -82,14 +84,14 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               className="mr-4"
               onClick={() => window.open(live, "_blank")}
             >
-              Перейти на сайт
+              {data.go_to_site}
             </Button>
             <Button
               variant="outline"
               size="sm"
               onClick={() => window.open(github, "_blank")}
             >
-              Репозиторий GitHub
+              {data.GitHub_repository}
             </Button>
           </div>
         </CredenzaFooter>

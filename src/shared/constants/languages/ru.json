@@ -136,8 +136,8 @@
     }
   },
   "work": {
-    "title": "Портфолио",
-    "description": "Вот некоторые проекты, над которыми я работал:",
+    "title_page": "Портфолио",
+    "description_page": "Вот некоторые проекты, над которыми я работал:",
     "categories": {
       "webDevelopment": "Веб-разработка",
       "appDevelopment": "Разработка приложений",
@@ -157,6 +157,12 @@
     "nextPage": "Перейти на следующую страницу",
     "lastPage": "Перейти на последнюю страницу",
     "rowsPerPage": "Строк на странице",
+    "GitHub_repository": "Репозиторий GitHub",
+    "go_to_site": "Перейти на сайт",
+    "work_period": "Период работы:",
+    "technology": "Технологии",
+    "description": "Описание",
+
     "projects": [
       {
         "num": "01",

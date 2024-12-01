@@ -136,8 +136,8 @@
     }
   },
   "work": {
-    "title": "Portfolio",
-    "description": "Here are some of the projects I've worked on:",
+    "title_page": "Portfolio",
+    "description_page": "Here are some of the projects I've worked on:",
     "categories": {
       "webDevelopment": "Web Development",
       "appDevelopment": "App Development",
@@ -157,6 +157,13 @@
     "nextPage": "Go to next page",
     "lastPage": "Go to last page",
     "rowsPerPage": "Rows per page",
+    "GitHub_repository": "GitHub repository",
+    "go_to_site": "Go to site",
+    "work_period": "Work period:",
+    "technology": "Tech Stack",
+    "description": "Description",
+
+
     "projects": [
       {
         "num": "01",

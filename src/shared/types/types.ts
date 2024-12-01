@@ -62,8 +62,8 @@ export interface Project {
 }
 
 export type WorkTranslation = {
-  title: string;
-  description: string;
+  title_page: string;
+  description_page: string;
   categories: {
     webDevelopment: string;
     appDevelopment: string;
@@ -85,4 +85,10 @@ export type WorkTranslation = {
   lastPage: string;
   rowsPerPage: string;
   projects: Project[];
+
+  GitHub_repository: string;
+  go_to_site: string;
+  work_period: string;
+  technology: string;
+  description: string;
 };

@@ -16,8 +16,8 @@ export const ProjectClient: React.FC<ProjectClientProps> = ({ data, language }) 
     <>
       <div className="flex items-start justify-between">
         <Heading
-          title={`${(data.title)} (${data.projects.length})`}
-          description={data.description}
+          title={`${(data.title_page)} (${data.projects.length})`}
+          description={data.description_page}
         />
       </div>
       <DataTable columns={columns} data={data.projects} language={language} />

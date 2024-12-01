@@ -154,7 +154,7 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
 
       {/* Модальное окно для проекта */}
       {selectedProject && (
-        <ProjectModal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} />
+        <ProjectModal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} data={translations} />
       )}
     </div>
   );
