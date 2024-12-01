@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { Credenza, CredenzaContent, CredenzaHeader, CredenzaTitle, CredenzaBody, CredenzaFooter, CredenzaClose } from "@/components/ui/сredenza"
+import { Credenza, CredenzaContent, CredenzaHeader, CredenzaTitle, CredenzaBody, CredenzaFooter } from "@/components/ui/сredenza"
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { Button } from "@/components/ui/button"
-import { Project, WorkTranslation } from '@/shared/types/types';
-import Image from 'next/image';
+import { Project, WorkTranslation } from '@/shared/types/types'
+import Image from 'next/image'
 
 interface ProjectModalProps {
   project: Project | null
@@ -25,17 +25,12 @@ const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => 
 
   return (
     <Credenza open={isOpen} onOpenChange={(open) => { if (!open) onClose() }}>
-      <CredenzaContent className="max-w-4xl w-full bg-white rounded-lg shadow-lg">
+      <CredenzaContent className="max-w-4xl w-full bg-primary text-accent rounded-lg shadow-lg">
         <CredenzaHeader className="relative">
-          <CredenzaTitle className="text-2xl font-bold text-gray-900">{title}</CredenzaTitle>
-          <div className="absolute top-0 right-0 p-2">
-            <CredenzaClose className="text-gray-500 w-8 h-8 hover:text-gray-700">
-              <div onClick={onClose}>×</div>
-            </CredenzaClose>
-          </div>
+          <CredenzaTitle className="text-3xl font-bold text-white">{title}</CredenzaTitle>
         </CredenzaHeader>
 
-        <CredenzaBody className="px-4 py-2">
+        <CredenzaBody className="px-6 py-4">
           {/* Карусель с изображениями */}
           <Carousel orientation="horizontal" className="mb-6">
             <CarouselContent>
@@ -47,22 +42,22 @@ const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => 
               ))}
             </CarouselContent>
 
-            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
-            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
+            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-accent hover:text-accent/80" />
+            <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-accent hover:text-accent/80" />
           </Carousel>
 
           {/* Описание проекта */}
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">{data.description}</h3>
-            <p className="text-gray-600">{projectDescription}</p>
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold text-white mb-2">{data.description}</h3>
+            <p className="text-accent">{projectDescription}</p>
           </div>
 
           {/* Стек технологий */}
-          <div className="mb-4">
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">{data.technology}</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold text-white mb-2">{data.technology}</h3>
+            <div className="flex flex-wrap gap-3">
               {stack.map((tech, index) => (
-                <span key={index} className="bg-gray-200 text-gray-800 py-1 px-3 rounded-full text-sm">
+                <span key={index} className="bg-[#232329] text-accent border-accent hover:bg-accent/10 py-1 px-3 rounded-full text-sm">
                   {tech.name}
                 </span>
               ))}
@@ -71,8 +66,8 @@ const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => 
 
           {/* Период проекта */}
           <div className="mb-4 flex items-center">
-            <h3 className="text-xl font-semibold text-gray-800 mr-2">{data.work_period}</h3>
-            <p className="text-gray-600">{`${startDate} - ${endDate}`}</p>
+            <h3 className="text-xl font-semibold text-white mr-2">{data.work_period}</h3>
+            <p className="text-accent">{`${startDate} - ${endDate}`}</p>
           </div>
         </CredenzaBody>
 

@@ -30,4 +30,12 @@
   .text-outline-hover {
     -webkit-text-stroke: 1px #b3a18d;
   }
+
+  .scrollbar-hidden {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
+  }
 }

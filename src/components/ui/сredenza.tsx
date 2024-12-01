@@ -75,9 +75,16 @@ const CredenzaContent = ({ className, children, ...props }: CredenzaProps) => {
   const CredenzaContent = isDesktop ? DialogContent : DrawerContent
 
   return (
-    <CredenzaContent className={className} {...props}>
+    <CredenzaContent
+      className={cn(
+        "max-h-[90vh] max-w-[90vw] overflow-auto", "scrollbar-hidden",
+        className
+      )}
+      {...props}
+    >
       {children}
     </CredenzaContent>
+
   )
 }
 
