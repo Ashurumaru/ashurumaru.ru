@@ -46,7 +46,7 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
     loadTranslations();
   }, [language]);
 
-  // Если переводов нет, показываем сообщение о загрузке
+  // Если переводов нет, показываем скелетоны
   const tableData = translations ? data : [];
 
   const table = useReactTable({
@@ -82,33 +82,41 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
   if (!translations) {
     return (
       <div className="flex justify-center items-center h-full">
-        <span>Loading...</span>
+        <div className="space-y-4 w-full">
+          <div className="h-8 bg-gray-200 rounded-lg animate-pulse w-1/4 mx-auto"></div> {/* Пример скелетона для заголовка */}
+          <div className="space-y-2">
+            {new Array(5).fill(null).map((_, idx) => (
+              <div key={idx} className="flex items-center justify-between h-12 bg-gray-200 rounded-lg animate-pulse">
+                <div className="h-4 w-1/4 bg-gray-300 rounded"></div> {/* Скелетон для текста */}
+                <div className="h-4 w-1/6 bg-gray-300 rounded"></div> {/* Скелетон для кнопок */}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
 
-  // Открытие модального окна с выбранным проектом
   const openModal = (project: Project) => {
-    setSelectedProject(project); // Устанавливаем выбранный проект
-    setIsModalOpen(true); // Открываем модальное окно
+    setSelectedProject(project);
+    setIsModalOpen(true);
   };
 
-  // Закрытие модального окна
   const closeModal = () => {
-    setIsModalOpen(false); // Закрываем модальное окно
-    setSelectedProject(null); // Сбрасываем выбранный проект
+    setIsModalOpen(false);
+    setSelectedProject(null);
   };
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} language={language} />
+      <DataTableToolbar table={table} data={translations} />
       <div className="rounded-md border">
-        <Table>
+        <Table className="overflow-x-auto w-full">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} colSpan={header.colSpan}>
+                  <TableHead key={header.id} colSpan={header.colSpan} className="text-xs md:text-base">
                     {header.isPlaceholder
                       ? null
                       : flexRender(header.column.columnDef.header, header.getContext())}
@@ -130,7 +138,7 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
                         openModal(project); // Открытие модального окна при клике на проект
                       }
                     }}
-                    className="transition-colors cursor-pointer hover:bg-accent/10"
+                    className="transition-colors cursor-pointer hover:bg-accent/10 text-sm md:text-base"
                   >
                     {row.getVisibleCells().map((cell) => (
                       <TableCell key={cell.id}>
@@ -142,7 +150,7 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
               })
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
+                <TableCell colSpan={columns.length} className="h-24 text-center text-xs md:text-base">
                   {translations.noResults}
                 </TableCell>
               </TableRow>
@@ -152,7 +160,6 @@ export function DataTable<TData extends Project | WorkTranslation, TValue>({ col
       </div>
       <DataTablePagination data={translations} table={table} />
 
-      {/* Модальное окно для проекта */}
       {selectedProject && (
         <ProjectModal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} data={translations} />
       )}

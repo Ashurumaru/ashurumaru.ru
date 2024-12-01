@@ -169,7 +169,8 @@
         "num": "01",
         "category": "Web Development",
         "title": "Personal Website",
-        "description": "A responsive personal portfolio website showcasing my work.",
+        "description": "A responsive portfolio website that showcases who I am and my projects.",
+        "longDescription": "This project is a personal portfolio website that features four main sections: Home, Services, Resume, and Portfolio. The Home page provides information about me, my social media links, and a brief personal bio. The Services section lists the services I offer. The Resume section includes tabs for my experience, education, skills, and about me. The Portfolio section showcases all the projects I have worked on or contributed to.",
         "stack": [
           { "name": "Next.js" },
           { "name": "Tailwind CSS" },
@@ -188,28 +189,237 @@
         "endDate": "2022-06-01"
       },
       {
-        "num": "01",
+        "num": "02",
         "category": "Web Development",
-        "title": "Personal Website",
-        "description": "A responsive personal portfolio website showcasing my work.",
+        "title": "Real Estate Listing Platform",
+        "description": "An online platform for listing and searching real estate for sale and rent.",
+        "longDescription": "This is an online platform for posting and searching real estate listings, developed as part of my thesis project. The platform addresses issues faced by existing services, such as outdated listings, complicated search, poor adaptation, and high risk of fraud. It offers an intuitive search with filters, chat features for user communication, and functionalities for both renters and landlords, including booking and application management. The integrated admin dashboard allows for managing listings and analyzing data.",
         "stack": [
           { "name": "Next.js" },
-          { "name": "Tailwind CSS" },
+          { "name": "PostgreSQL" },
           { "name": "TypeScript" },
-          { "name": "React" },
-          { "name": "Vercel" }
+          { "name": "TailwindCSS" },
+          { "name": "Socket.io" },
+          { "name": "Neon" },
+          { "name": "Cloudinary" },
+          { "name": "shadcn/ui" }
         ],
-        "image": "/assets/work/thumb1.png",
         "images": [
           "/assets/work/thumb1.png",
           "/assets/work/thumb2.png",
           "/assets/work/thumb3.png"
         ],
-        "live": "https://github.com/Ashurumaru/ashurumaru.ru",
-        "github": "https://github.com/Ashurumaru/ashurumaru.ru",
-        "startDate": "2022-01-01",
-        "endDate": "2022-06-01"
+        "live": "https://github.com/Ashurumaru/nest-finder",
+        "github": "https://github.com/Ashurumaru/nest-finder",
+        "startDate": "2023-09-01",
+        "endDate": "2024-06-01"
+      },
+      {
+        "num": "03",
+        "category": "Desktop Development",
+        "title": "User Management System (WPF)",
+        "description": "A desktop application for user management with registration, login, and profile management functionality.",
+        "longDescription": "This project was developed as part of my educational practice and represents a user management system built with WPF and C#. Key features include user registration and login, a personal account section, theme selection, and background customization. Admin users can manage, add, update, and delete user accounts, while regular users are limited to viewing data. The application follows the MVVM pattern for clean separation of logic and UI, and uses Entity Framework for interaction with a SQL Server database.",
+        "stack": [
+          { "name": "WPF" },
+          { "name": "C#" },
+          { "name": "Entity Framework" },
+          { "name": "MVVM" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/educational_practice_wpf_mvvm",
+        "github": "https://github.com/Ashurumaru/educational_practice_wpf_mvvm",
+        "startDate": "2024-01-01",
+        "endDate": "2024-03-01"
+      },
+      {
+        "num": "04",
+        "category": "Desktop Development",
+        "title": "Car Management System (WPF)",
+        "description": "A desktop application for managing cars, their rental, and maintenance.",
+        "longDescription": "This project was developed as part of my educational practice and represents a car management system, including rental and maintenance, built with WPF and C#. The system features user authentication and registration, allowing users to view their profile information. Data management is handled through 10 database tables, and users can search, filter, and sort information. The system also includes report generation capabilities. Entity Framework is used for database interaction, while the Docx library is used for creating and editing docx files.",
+        "stack": [
+          { "name": "WPF" },
+          { "name": "C#" },
+          { "name": "Entity Framework" },
+          { "name": "Docx Library" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/educational_practice2",
+        "github": "https://github.com/Ashurumaru/educational_practice2",
+        "startDate": "2024-04-01",
+        "endDate": "2024-06-01"
+      },
+      {
+        "num": "05",
+        "category": "Bot Development",
+        "title": "Telegram Message Listener",
+        "description": "A Telegram bot that saves messages from chats to a MySQL database.",
+        "longDescription": "This project is a Telegram bot that saves messages from chats to a MySQL database. The bot uses asynchronous interaction via the aiomysql library for database handling and the python-telegram-bot library for bot development. The project helps to efficiently collect and store chat message data for further use.",
+        "stack": [
+          { "name": "Python" },
+          { "name": "python-telegram-bot" },
+          { "name": "aiomysql" },
+          { "name": "MySQL" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/TelegramMessageListener",
+        "github": "https://github.com/Ashurumaru/TelegramMessageListener",
+        "startDate": "2024-07-01",
+        "endDate": "2024-08-01"
+      },
+      {
+        "num": "06",
+        "category": "Desktop Development",
+        "title": "Corporate Portal GK-Dorogi-Rossii",
+        "description": "A corporate portal for task management, document flow, and internal communication.",
+        "longDescription": "GK-Dorogi-Rossii is a corporate portal developed using WPF and C#. The application is designed for managing various aspects of company activities, including document flow, task management, and internal communication. The platform allows creating and editing tasks, exchanging messages between employees, managing document versions, and generating reports on tasks and employee performance.",
+        "stack": [
+          { "name": "C#" },
+          { "name": ".NET" },
+          { "name": "WPF" },
+          { "name": "Entity Framework" },
+          { "name": "Microsoft SQL Server" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/GK-Dorogi-Rossii",
+        "github": "https://github.com/Ashurumaru/GK-Dorogi-Rossii",
+        "startDate": "2024-03-01",
+        "endDate": "2024-06-01"
+      },
+      {
+        "num": "07",
+        "category": "Desktop Development",
+        "title": "FleetVehiclesManagement",
+        "description": "A system for managing a fleet of vehicles, including orders, customers, vehicles, insurance, and additional services.",
+        "longDescription": "FleetVehiclesManagement is a comprehensive system developed to manage all aspects of a vehicle fleet. It includes managing users, orders, vehicles, customers, insurance policies, and additional services. The system allows for easy data management, reporting, and user access control, ensuring efficient fleet operations.",
+        "stack": [
+          { "name": "C#" },
+          { "name": ".NET" },
+          { "name": "WPF" },
+          { "name": "Entity Framework" },
+          { "name": "SQL Server" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/FleetVehiclesManagement",
+        "github": "https://github.com/Ashurumaru/FleetVehiclesManagement",
+        "startDate": "2023-01-01",
+        "endDate": "2023-06-01"
+      },
+      {
+        "num": "08",
+        "category": "Desktop Development",
+        "title": "Cafe Automation - CafeSisters",
+        "description": "An application for automating cafe operations with terminal, menu, and dish management functionality.",
+        "longDescription": "CafeSisters is a desktop application for automating cafe operations, developed using WPF, .NET, and MSSQL. The application includes several key features such as a terminal for processing orders, a menu for adding and editing dishes, and managing dish information. The system allows selecting dishes, adding them to the order, and managing the quantity and total cost of the order. Additionally, there are features for adding new dishes, changing prices, and descriptions. Entity Framework is used for database interaction, ensuring seamless communication with the MSSQL server.",
+        "stack": [
+          { "name": "C#" },
+          { "name": ".NET" },
+          { "name": "WPF" },
+          { "name": "MSSQL" },
+          { "name": "Entity Framework" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/CafeSisters",
+        "github": "https://github.com/Ashurumaru/CafeSisters",
+        "startDate": "2024-05-01",
+        "endDate": "2024-08-01"
+      },
+      {
+        "num": "09",
+        "category": "Desktop Development",
+        "title": "Print Shop Automation - PrintHouse",
+        "description": "An application for managing print shop operations using Material Design.",
+        "longDescription": "PrintHouse is a desktop application for automating print shop operations, developed using WPF, .NET, and MSSQL. The application includes features for managing print orders, tracking clients, and handling printed products. The interface uses Material Design, giving the application a modern and intuitive look. The system allows tracking order statuses, updating client information, and generating reports. Entity Framework is used for database interaction, streamlining communication with the MSSQL server.",
+        "stack": [
+          { "name": "C#" },
+          { "name": ".NET" },
+          { "name": "WPF" },
+          { "name": "MSSQL" },
+          { "name": "Entity Framework" },
+          { "name": "Material Design" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/PrintHouse",
+        "github": "https://github.com/Ashurumaru/PrintHouse",
+        "startDate": "2024-06-01",
+        "endDate": "2024-09-01"
+      },
+      {
+        "num": "10",
+        "category": "Desktop Development",
+        "title": "Roadside Service - RoadsideService",
+        "description": "An application for managing motel and auto service bookings in a roadside service.",
+        "longDescription": "RoadsideService is a desktop application for managing a roadside service, including motel and auto service booking systems. It is developed using WPF, .NET, and MSSQL technologies. The application includes features for booking rooms in the motel, managing auto service orders, and keeping track of clients. The interface offers modern navigation, allowing users to view available services, check dates, and manage their bookings. Entity Framework is used for database interaction, simplifying communication with the MSSQL server.",
+        "stack": [
+          { "name": "C#" },
+          { "name": ".NET" },
+          { "name": "WPF" },
+          { "name": "MSSQL" },
+          { "name": "Entity Framework" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/RoadsideService",
+        "github": "https://github.com/Ashurumaru/RoadsideService",
+        "startDate": "2024-08-01",
+        "endDate": "2024-10-01"
+      },
+      {
+        "num": "11",
+        "category": "Desktop Development",
+        "title": "Phone Repair Service - PhoneService",
+        "description": "An application for managing phone repairs and order tracking in a service center.",
+        "longDescription": "PhoneService is a desktop application for managing phone repair processes in a service center. Developed using WPF, .NET, and MSSQL, the app includes features for creating and managing repair orders, tracking clients and spare parts, and monitoring repair status. Entity Framework is used for database interaction, simplifying communication with the MSSQL server and allowing efficient real-time data management.",
+        "stack": [
+          { "name": "C#" },
+          { "name": ".NET" },
+          { "name": "WPF" },
+          { "name": "MSSQL" },
+          { "name": "Entity Framework" }
+        ],
+        "images": [
+          "/assets/work/thumb1.png",
+          "/assets/work/thumb2.png",
+          "/assets/work/thumb3.png"
+        ],
+        "live": "https://github.com/Ashurumaru/PhoneService",
+        "github": "https://github.com/Ashurumaru/PhoneService",
+        "startDate": "2024-10-01",
+        "endDate": "2024-12-01"
       }
+
     ]
   }
 }
