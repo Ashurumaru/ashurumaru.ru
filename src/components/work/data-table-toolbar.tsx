@@ -16,7 +16,7 @@ export function DataTableToolbar<TData>({ table, data }: DataTableToolbarProps<T
 
   const localizedCategories = [
     { value: data.categories.webDevelopment, label: data.categories.webDevelopment },
-    { value: data.categories.appDevelopment, label: data.categories.appDevelopment },
+    { value: data.categories.desktopDevelopment, label: data.categories.desktopDevelopment },
     { value: data.categories.design, label: data.categories.design },
     { value: data.categories.businessCardSite, label: data.categories.businessCardSite },
     { value: data.categories.telegramBot, label: data.categories.telegramBot },

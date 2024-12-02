@@ -66,7 +66,7 @@ export type WorkTranslation = {
   description_page: string;
   categories: {
     webDevelopment: string;
-    appDevelopment: string;
+    desktopDevelopment: string;
     design: string;
     businessCardSite: string;
     telegramBot: string;

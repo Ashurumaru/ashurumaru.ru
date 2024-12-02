@@ -40,19 +40,20 @@ const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => 
                     src={image}
                     alt={`Project Image ${index + 1}`}
                     className="w-full object-cover rounded-md shadow-md sm:max-h-[300px] md:max-h-[400px] max-h-[500px]"
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: 'contain' }}
                   />
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-accent hover:text-accent/80" />
+            <CarouselPrevious
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-accent hover:text-accent/80" />
             <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-accent hover:text-accent/80" />
           </Carousel>
 
           {/* Описание проекта */}
           <div className="mb-6">
             <h3 className="text-xl font-semibold text-white mb-2">{data.description}</h3>
-            <p className="text-accent text-sm sm:text-base">{projectDescription}</p>
+            <pre className="text-accent text-sm sm:text-base whitespace-pre-wrap">{projectDescription}</pre>
           </div>
 
           {/* Стек технологий */}
@@ -60,7 +61,8 @@ const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => 
             <h3 className="text-xl font-semibold text-white mb-2">{data.technology}</h3>
             <div className="flex flex-wrap gap-2">
               {stack.map((tech, index) => (
-                <span key={index} className="bg-[#232329] text-accent border-accent hover:bg-accent/10 py-1 px-3 rounded-full text-xs sm:text-sm">
+                <span key={index}
+                      className="bg-[#232329] text-accent border-accent hover:bg-accent/10 py-1 px-3 rounded-full text-xs sm:text-sm">
                   {tech.name}
                 </span>
               ))}
@@ -70,30 +72,37 @@ const ProjectModal = ({ project, isOpen, onClose, data }: ProjectModalProps) => 
           {/* Период проекта */}
           <div className="mb-4 flex items-center">
             <h3 className="text-xl font-semibold text-white mr-2">{data.work_period}</h3>
-            <p className="text-accent text-sm sm:text-base">{`${startDate} - ${endDate}`}</p>
+            <p className="text-accent text-sm sm:text-base">
+              {`${startDate} - ${endDate ? endDate : 'ongoing'}`}
+            </p>
           </div>
         </CredenzaBody>
 
         <CredenzaFooter className="flex justify-between items-center p-4 flex-col sm:flex-row">
           <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full sm:w-auto mb-2 sm:mb-0"
-              onClick={() => window.open(live, "_blank")}
-            >
-              {data.go_to_site}
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full sm:w-auto"
-              onClick={() => window.open(github, "_blank")}
-            >
-              {data.GitHub_repository}
-            </Button>
+            {data.go_to_site && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full sm:w-auto mb-2 sm:mb-0"
+                onClick={() => window.open(live, "_blank")}
+              >
+                {data.go_to_site}
+              </Button>
+            )}
+            {data.GitHub_repository && (
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full sm:w-auto"
+                onClick={() => window.open(github, "_blank")}
+              >
+                {data.GitHub_repository}
+              </Button>
+            )}
           </div>
         </CredenzaFooter>
+
       </CredenzaContent>
     </Credenza>
   )
